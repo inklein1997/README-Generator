@@ -49,32 +49,90 @@ function renderLicenseSection(license) {
   (license == 'No license') ? licenseSection = "This project is not licensed." : licenseSection = "This project is licensed under the terms of ["+license+"]("+renderLicenseLink(license)+")."
   return licenseSection
 }
+
+function renderAgreementCOCSection(agreementCOC) {
+  let COCsection
+  agreementCOC === true ? COCsection = "Before contributing to **README.md Generator**, please read this [code of conduct](code_of_conduct.md)[^1].<br>" : COCsection = null
+  return COCsection
+}
+
+function renderCodeOfConductBadge(agreementCOC) {
+  let COCbadge
+  (agreementCOC) ? COCbadge = "[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)" : COCbadge = null 
+  return COCbadge
+}
+
+function renderInstallationSeciont(installation, packageName, packageURL, packageName, title) {
+  let installationSection
+  (installation) ? installationSection = `The [${packageName} Package](${packageURL}) is required for this application.  Prior to running this application, please ensure the ${packageName} package is installed by running the following command in your command-line... :
+  
+  \`\`\`
+  ${packageInstallCode}
+  \`\`\`` : installationSection = `No installations are required for ${title}`
+  return installationSection
+}
+
+let count = 0
+function renderGitHub(github, platform, count) {
+  count ++
+  let githubContact
+  platform.includes('GitHub') ? githubContact = `${count}. GitHub -- [${github}](https://github.com/${github})` : githubContact = null
+  return githubContact
+}
+function renderEmail(email, platform, count) {
+  count ++
+  let emailContact
+  platform.includes('Email') ? emailContact = `${count}. Email -- ${email}` : emailContact = null
+  return emailContact
+}
+
+
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  const {title, description, installation, usage, license, contribution, test}  = data
+function generateMarkdown(answers) {
+  const {title, contents, whatDesc, whyDesc, installation, packageName, packageURL, packageInstallCode, usage, license, agreementCOC, contribution, test, platform, email, github}  = answers
   return `# ${title}
-
-  ## Table of Contents
-  
   [${renderLicenseBadge(license)}](${renderLicenseLink(license)})
+  ${renderCodeOfConductBadge(agreementCOC)}
 
-  ## Description
-  ${description}
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contribution](#contribution)
+- [Tests](#tests)
+- [Questions](#questions)
+
+## Description
+  **${title}** is a ${whatDesc} using the [${packageName} Package](${packageURL}). **${title}** was created to ${whyDesc}.
   
-  ## Installation
-  ${installation}
-  
-  ## Usage
+## Installation
+  ${renderInstallationSeciont(installation, packageName, packageURL, packageName, title)}
+
+## Usage
+  1. To invoke the application, enter the following command
+  \`\`\`
   ${usage}
-  
-  ## License
+  \`\`\`
+
+## License
   ${renderLicenseSection(license)}
   
-  ## Contributing
-  ${contribution}
+## Contribution
+${renderAgreementCOCSection(agreementCOC)}}
+Here's how you can contribute...
+1. Add issue or recommendation for improvement to Issues tab on Github.
+2. Submit pull request for review.
   
-  ## Tests
-  ${test}`
+## Tests
+
+
+## Questions
+  If you have any questions, please contact me via:
+  ${renderGitHub(github, platform, count)}
+  ${renderEmail(email, platform, count)}
+  
+  [^1]: Code of Conduct provided by [Contributor Covenant](https://www.contributor-covenant.org/)`
 };
 
 module.exports = generateMarkdown;

@@ -10,29 +10,29 @@ const questions = [
         message: 'What is the title of your application?',
         name: 'title'
     },
-    {
-        type: 'checkbox',
-        message: 'Which of the following sections would you like in your README.md?',
-        name: 'contents',
-        choices: ['Description', 'Installation','Usage', 'License','Contribution','Tests','Questions'],
-    },
+    // {
+    //     type: 'checkbox',
+    //     message: 'Which of the following sections would you like in your README.md?',
+    //     name: 'contents',
+    //     choices: ['Description', 'Installation','Usage', 'License','Contribution','Tests','Questions'],
+    // },
     {
         type: 'input',
         message: 'What is your project? (Complete Statement): [Title] is a ',
         name: 'whatDesc',
-        when: (answers) => answers.contents.includes('Description'),
+        // when: (answers) => answers.contents.includes('Description'),
     },
     {
         type: 'input',
         message: 'Why did you create your project? (Complete Statement): [Title] was created to ',
         name: 'whyDesc',
-        when: (answers) => answers.contents.includes('Description'),
+        // when: (answers) => answers.contents.includes('Description'),
     },
     {
         type: 'confirm',
         message: 'Do any packages need to be installed for you application?',
         name: 'installation',
-        when: (answers) => answers.contents.includes('Installation'),
+        // when: (answers) => answers.contents.includes('Installation'),
     },
     {
         type: 'input',
@@ -56,7 +56,7 @@ const questions = [
         type: 'input',
         message: 'What code is needed to invoke [Title]?',
         name: 'usage',
-        when: (answers) => answers.contents.includes('Usage')
+        // when: (answers) => answers.contents.includes('Usage')
     },
     {
         type: 'list',
@@ -74,7 +74,7 @@ const questions = [
         type: 'input',
         message: 'Input contribution guidelines',
         name: 'contribution',
-        when: (answers) => answers.contents.includes('Contribution'),
+        // when: (answers) => answers.contents.includes('Contribution'),
     },
     {
         type: 'input',
