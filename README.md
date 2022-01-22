@@ -2,20 +2,22 @@
 
   ## Table of Contents
   
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
   ## Description
-  tets
+  
   
   ## Installation
-  test
+  
   
   ## Usage
-  test
+  
   
   ## License
-  ISC
+  MIT
   
   ## Contributing
-  ests
+  
   
   ## Tests
-  est
+  
