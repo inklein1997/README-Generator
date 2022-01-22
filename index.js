@@ -39,7 +39,7 @@ const questions = [
         type: 'list',
         message: 'Choose a license',
         name: 'license',
-        choices: ['MIT','ISC','Creative Commons Attribution 4.0', 'GNU General Public License v3.0']
+        choices: ['No license','MIT','ISC','Creative Commons Attribution 4.0', 'GNU General Public License v3.0']
     },
 ];
 

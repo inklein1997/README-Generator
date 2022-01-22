@@ -2,7 +2,7 @@
 
   ## Table of Contents
   
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  []()
 
   ## Description
   
@@ -14,7 +14,7 @@
   
   
   ## License
-  MIT
+  This project is not licensed
   
   ## Contributing
   
