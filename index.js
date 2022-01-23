@@ -3,8 +3,6 @@ const fs = require('fs')
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const generateCOC = require('./utils/generateCodeOfConduct.js')
-console.log(generateMarkdown)
-console.log(generateCOC)
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -96,10 +94,12 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(answers) {
     console.log(answers)
-    fs.writeFile('./generated/README.md', generateMarkdown(answers), (err) => {
+    fs.writeFile('./generatedFiles/README.md', generateMarkdown(answers), (err) => {
         err ? console.log(err) : console.log('README.md generated!')
     })
-    fs.writeFile('./generated/code_of_conduct.md', generateCOC(answers), (err) => {err ? console.log(err) : console.log('code_of_conduct.md generated!')})
+    fs.writeFile('./generatedFiles/code_of_conduct.md', generateCOC(answers), (err) => {
+        err ? console.log(err) : console.log('code_of_conduct.md generated!')
+    })
 }
 
 // TODO: Create a function to initialize app

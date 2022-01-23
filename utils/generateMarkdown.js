@@ -97,10 +97,9 @@ function renderFooter(agreementCOC) {
   return footer
 }
 
-
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(answers) {
-  const {title, contents, whatDesc, whyDesc, installation, packageName, packageURL, packageInstallCode, usage, license, agreementCOC, contribution, test, platform, email, github}  = answers
+  const {title, whatDesc, whyDesc, installation, packageName, packageURL, packageInstallCode, usage, license, agreementCOC, contribution, test, platform, email, github}  = answers
   return `# ${title}
   [${renderLicenseBadge(license)}](${renderLicenseLink(license)})
   ${renderCodeOfConductBadge(agreementCOC)}
@@ -118,7 +117,7 @@ function generateMarkdown(answers) {
   ${renderDescription(title, whatDesc, packageName, packageURL, whyDesc, installation)}
   
 ## Installation
-  For this is a _NodeJS_ application, you must have NodeJS downloaded.  See [here](https://nodejs.org/en/download/)<br>
+  Since **${title}** is a _NodeJS_ application, you must have NodeJS downloaded.  Please download [here](https://nodejs.org/en/download/) if you have not done so.
   ${renderInstallationSection(installation, packageName, packageURL, packageName, title, packageInstallCode)}
 
 ## Usage
@@ -132,12 +131,11 @@ function generateMarkdown(answers) {
   
 ## Contribution
 ${renderAgreementCOCSection(agreementCOC)}}
-Here's how you can contribute...
-1. Add issue or recommendation for improvement to Issues tab on Github.
-2. Submit pull request for review.
-  
-## Tests
+Here's how you can contribute...<br>
+${contribution}
 
+## Tests
+${test}
 
 ## Questions
   If you have any questions, please contact me via:

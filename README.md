@@ -15,6 +15,7 @@
   **README.md Generator** is a command-line application that dynamically generates a professional README.md file based on the user's input using the [Inquirer package](https://www.npmjs.com/package/inquirer). **README.md Generator** was created to provide a quick and easy way to generate a project's README.md file, so that the creator devote more time to the actual project itself.
   
 ## Installation
+  Since **README.md Generator** is a _NodeJS_ application, you must have NodeJS downloaded.  Please download [here](https://nodejs.org/en/download/) if you have not done so.<br>
   The [Inquirer Package](https://www.npmjs.com/package/inquirer) is required for this application.  Prior to running this application, please ensure the Inquirer package is installed by running the following command in your command-line... 
   ```
   npm i inquirer

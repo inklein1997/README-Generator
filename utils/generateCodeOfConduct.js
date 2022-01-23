@@ -1,7 +1,7 @@
 function generateCOC(answers) {
     const {agreementCOC} = answers
     if (agreementCOC != true) {
-        return
+        return ``
     } else
     return `# Contributor Covenant Code of Conduct
 
