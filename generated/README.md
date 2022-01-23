@@ -1,6 +1,6 @@
-# test
-  []()
-  null
+# 
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 ## Table of Contents
 - [Description](#description)
@@ -12,22 +12,27 @@
 - [Questions](#questions)
 
 ## Description
-  **test** is a test using the [undefined Package](undefined). **test** was created to tet.
+  **** is a  using the [ Package](). **** was created to .
   
 ## Installation
-  No installations are required for test
+  For this is a _NodeJS_ application, you must have NodeJS downloaded.  See [here](https://nodejs.org/en/download/)<br>
+  The [ Package]() is required for ****.  Prior to running this application, please ensure the  package is installed by running the following command in your command-line... :
+  
+  ```
+  
+  ```
 
 ## Usage
   1. To invoke the application, enter the following command
   ```
-  tset
+  
   ```
 
 ## License
-  This project is not licensed.
+  This project is licensed under the terms of [MIT](https://opensource.org/licenses/MIT).
   
 ## Contribution
-null}
+Before contributing to **README.md Generator**, please read this [code of conduct](code_of_conduct.md)[^1].<br>}
 Here's how you can contribute...
 1. Add issue or recommendation for improvement to Issues tab on Github.
 2. Submit pull request for review.
@@ -37,7 +42,8 @@ Here's how you can contribute...
 
 ## Questions
   If you have any questions, please contact me via:
-  null
-  null
   
+  
+
   [^1]: Code of Conduct provided by [Contributor Covenant](https://www.contributor-covenant.org/)
+  

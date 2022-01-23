@@ -2,6 +2,9 @@
 const fs = require('fs')
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
+const generateCOC = require('./utils/generateCodeOfConduct.js')
+console.log(generateMarkdown)
+console.log(generateCOC)
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -10,29 +13,20 @@ const questions = [
         message: 'What is the title of your application?',
         name: 'title'
     },
-    // {
-    //     type: 'checkbox',
-    //     message: 'Which of the following sections would you like in your README.md?',
-    //     name: 'contents',
-    //     choices: ['Description', 'Installation','Usage', 'License','Contribution','Tests','Questions'],
-    // },
     {
         type: 'input',
-        message: 'What is your project? (Complete Statement): [Title] is a ',
+        message: 'What is your project? (Complete Statement): [Title] is a',
         name: 'whatDesc',
-        // when: (answers) => answers.contents.includes('Description'),
     },
     {
         type: 'input',
-        message: 'Why did you create your project? (Complete Statement): [Title] was created to ',
+        message: 'Why did you create your project? (Complete Statement): [Title] was created to',
         name: 'whyDesc',
-        // when: (answers) => answers.contents.includes('Description'),
     },
     {
         type: 'confirm',
         message: 'Do any packages need to be installed for you application?',
         name: 'installation',
-        // when: (answers) => answers.contents.includes('Installation'),
     },
     {
         type: 'input',
@@ -56,7 +50,6 @@ const questions = [
         type: 'input',
         message: 'What code is needed to invoke [Title]?',
         name: 'usage',
-        // when: (answers) => answers.contents.includes('Usage')
     },
     {
         type: 'list',
@@ -74,7 +67,6 @@ const questions = [
         type: 'input',
         message: 'Input contribution guidelines',
         name: 'contribution',
-        // when: (answers) => answers.contents.includes('Contribution'),
     },
     {
         type: 'input',
@@ -104,10 +96,10 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(answers) {
     console.log(answers)
-    console.log(answers.contents)
     fs.writeFile('./generated/README.md', generateMarkdown(answers), (err) => {
         err ? console.log(err) : console.log('README.md generated!')
     })
+    fs.writeFile('./generated/code_of_conduct.md', generateCOC(answers), (err) => {err ? console.log(err) : console.log('code_of_conduct.md generated!')})
 }
 
 // TODO: Create a function to initialize app

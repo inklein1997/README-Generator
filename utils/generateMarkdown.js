@@ -1,3 +1,4 @@
+let count = 0
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
@@ -50,40 +51,50 @@ function renderLicenseSection(license) {
   return licenseSection
 }
 
+function renderDescription(title, whatDesc, packageName, packageURL, whyDesc, installation) {
+  let description;
+  installation ? description = `**${title}** is a ${whatDesc} using the [${packageName} Package](${packageURL}). **${title}** was created to ${whyDesc}.` : description = `**${title}** is a ${whatDesc}. **${title}** was created to ${whyDesc}.`
+  return description
+}
+
 function renderAgreementCOCSection(agreementCOC) {
   let COCsection
-  agreementCOC === true ? COCsection = "Before contributing to **README.md Generator**, please read this [code of conduct](code_of_conduct.md)[^1].<br>" : COCsection = null
+  agreementCOC === true ? COCsection = "Before contributing to **README.md Generator**, please read this [code of conduct](code_of_conduct.md)[^1].<br>" : COCsection = ""
   return COCsection
 }
 
 function renderCodeOfConductBadge(agreementCOC) {
   let COCbadge
-  (agreementCOC) ? COCbadge = "[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)" : COCbadge = null 
+  (agreementCOC) ? COCbadge = "[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)" : COCbadge = ""
   return COCbadge
 }
 
-function renderInstallationSeciont(installation, packageName, packageURL, packageName, title) {
+function renderInstallationSection(installation, packageName, packageURL, packageName, title, packageInstallCode) {
   let installationSection
-  (installation) ? installationSection = `The [${packageName} Package](${packageURL}) is required for this application.  Prior to running this application, please ensure the ${packageName} package is installed by running the following command in your command-line... :
+  (installation) ? installationSection = `The [${packageName} Package](${packageURL}) is required for **${title}**.  Prior to running this application, please ensure the ${packageName} package is installed by running the following command in your command-line... :
   
   \`\`\`
   ${packageInstallCode}
-  \`\`\`` : installationSection = `No installations are required for ${title}`
+  \`\`\`` : installationSection = `No package installations are required for **${title}**.`
   return installationSection
 }
 
-let count = 0
 function renderGitHub(github, platform, count) {
   count ++
   let githubContact
-  platform.includes('GitHub') ? githubContact = `${count}. GitHub -- [${github}](https://github.com/${github})` : githubContact = null
+  platform.includes('GitHub') ? githubContact = `${count}. GitHub -- [${github}](https://github.com/${github})` : githubContact = ""
   return githubContact
 }
 function renderEmail(email, platform, count) {
   count ++
   let emailContact
-  platform.includes('Email') ? emailContact = `${count}. Email -- ${email}` : emailContact = null
+  platform.includes('Email') ? emailContact = `${count}. Email -- ${email}` : emailContact = ""
   return emailContact
+}
+function renderFooter(agreementCOC) {
+  let footer
+  agreementCOC ? footer = "[^1]: Code of Conduct provided by [Contributor Covenant](https://www.contributor-covenant.org/)" : footer = ""
+  return footer
 }
 
 
@@ -104,10 +115,11 @@ function generateMarkdown(answers) {
 - [Questions](#questions)
 
 ## Description
-  **${title}** is a ${whatDesc} using the [${packageName} Package](${packageURL}). **${title}** was created to ${whyDesc}.
+  ${renderDescription(title, whatDesc, packageName, packageURL, whyDesc, installation)}
   
 ## Installation
-  ${renderInstallationSeciont(installation, packageName, packageURL, packageName, title)}
+  For this is a _NodeJS_ application, you must have NodeJS downloaded.  See [here](https://nodejs.org/en/download/)<br>
+  ${renderInstallationSection(installation, packageName, packageURL, packageName, title, packageInstallCode)}
 
 ## Usage
   1. To invoke the application, enter the following command
@@ -131,8 +143,9 @@ Here's how you can contribute...
   If you have any questions, please contact me via:
   ${renderGitHub(github, platform, count)}
   ${renderEmail(email, platform, count)}
-  
-  [^1]: Code of Conduct provided by [Contributor Covenant](https://www.contributor-covenant.org/)`
+
+  ${renderFooter(agreementCOC)}
+  `
 };
 
 module.exports = generateMarkdown;
