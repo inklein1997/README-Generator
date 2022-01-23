@@ -1,5 +1,5 @@
-let count = 0
-// TODO: Create a function that returns a license badge based on which license is passed in
+let count = 0   //needed for ordered list display on .md file
+// function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   let badge
@@ -21,7 +21,7 @@ function renderLicenseBadge(license) {
   }
   return badge
 }
-// TODO: Create a function that returns the license link
+// function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   let link
@@ -43,7 +43,7 @@ function renderLicenseLink(license) {
   }
   return link
 }
-// TODO: Create a function that returns the license section of README
+// function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   let licenseSection
@@ -51,24 +51,28 @@ function renderLicenseSection(license) {
   return licenseSection
 }
 
+//renders description.  Accounts for difference in description if their is/isnt installations
 function renderDescription(title, whatDesc, packageName, packageURL, whyDesc, installation) {
   let description;
   installation ? description = `**${title}** is a ${whatDesc} using the [${packageName} Package](${packageURL}). **${title}** was created to ${whyDesc}.` : description = `**${title}** is a ${whatDesc}. **${title}** was created to ${whyDesc}.`
   return description
 }
 
+//renders agreement for code of conduct if user selected they agreed to its terms
 function renderAgreementCOCSection(agreementCOC) {
   let COCsection
   agreementCOC === true ? COCsection = "Before contributing to **README.md Generator**, please read this [code of conduct](code_of_conduct.md)[^1].<br>" : COCsection = ""
   return COCsection
 }
 
+//renders badge for code of conduct if user selected they agreed to its terms
 function renderCodeOfConductBadge(agreementCOC) {
   let COCbadge
   (agreementCOC) ? COCbadge = "[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)" : COCbadge = ""
   return COCbadge
 }
 
+//renders installation instructions for 2 situations.  situation 1=if there is installation instructions or situation 2=if no packages need to installed
 function renderInstallationSection(installation, packageName, packageURL, packageName, title, packageInstallCode) {
   let installationSection
   (installation) ? installationSection = `The [${packageName} Package](${packageURL}) is required for **${title}**.  Prior to running this application, please ensure the ${packageName} package is installed by running the following command in your command-line... :
@@ -79,25 +83,30 @@ function renderInstallationSection(installation, packageName, packageURL, packag
   return installationSection
 }
 
+//renders github line if user inputs
 function renderGitHub(github, platform, count) {
   count ++
   let githubContact
   platform.includes('GitHub') ? githubContact = `${count}. GitHub -- [${github}](https://github.com/${github})` : githubContact = ""
   return githubContact
 }
+
+//renders email line if user inputs
 function renderEmail(email, platform, count) {
   count ++
   let emailContact
   platform.includes('Email') ? emailContact = `${count}. Email -- ${email}` : emailContact = ""
   return emailContact
 }
+
+//renders footer if user agreed to code of conduct
 function renderFooter(agreementCOC) {
   let footer
   agreementCOC ? footer = "[^1]: Code of Conduct provided by [Contributor Covenant](https://www.contributor-covenant.org/)" : footer = ""
   return footer
 }
 
-// TODO: Create a function to generate markdown for README
+//function to generate markdown for README
 function generateMarkdown(answers) {
   const {title, whatDesc, whyDesc, installation, packageName, packageURL, packageInstallCode, usage, license, agreementCOC, contribution, test, platform, email, github}  = answers
   return `# ${title}
@@ -146,4 +155,5 @@ ${test}
   `
 };
 
+//exports generateMarkdown so it can be pulled at index.js
 module.exports = generateMarkdown;

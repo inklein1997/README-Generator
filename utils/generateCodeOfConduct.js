@@ -1,3 +1,4 @@
+//generates code of conduct if user agrees to its terms
 function generateCOC(answers) {
     const {agreementCOC} = answers
     if (agreementCOC != true) {

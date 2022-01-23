@@ -1,10 +1,10 @@
-// TODO: Include packages needed for this application
+// Include packages and filesneeded for this application
 const fs = require('fs')
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const generateCOC = require('./utils/generateCodeOfConduct.js')
 
-// TODO: Create an array of questions for user input
+// Create an array of questions for user input
 const questions = [
     {
         type: 'input',
@@ -91,21 +91,23 @@ const questions = [
     },
 ];
 
-// TODO: Create a function to write README file
+// function to write markdown files
 function writeToFile(answers) {
     console.log(answers)
+    //Writes README.md
     fs.writeFile('./generatedFiles/README.md', generateMarkdown(answers), (err) => {
         err ? console.log(err) : console.log('README.md generated!')
     })
+    //Writes code_of_conduct.md
     fs.writeFile('./generatedFiles/code_of_conduct.md', generateCOC(answers), (err) => {
         err ? console.log(err) : console.log('code_of_conduct.md generated!')
     })
 }
 
-// TODO: Create a function to initialize app
+//function to initialize app
 function init() {
     inquirer.prompt(questions).then(writeToFile)
 }
 
-// Function call to initialize app
+//calls init function
 init();
