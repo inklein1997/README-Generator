@@ -26,6 +26,7 @@
   ```bash
   node index.js
   ```
+  If you would like to watch a video displaying a runthrough of this application, click [here](https://drive.google.com/file/d/1YR4Mzhs2_cgAj2SxkE05LAa-ewToR1gO/view).
   
 ## License
   This project is licensed under the terms of [MIT](https://opensource.org/licenses/MIT).
